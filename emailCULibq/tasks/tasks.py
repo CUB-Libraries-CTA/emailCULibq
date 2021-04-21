@@ -28,7 +28,7 @@ def sendEmail(sender_email,receiver_email,subject,template=None,template_data=No
     message.attach(part1)
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.colorado.edu", 465, context=context) as server:
+    with smtplib.SMTP_SSL("smtp.colorado.edu", 25, context=context) as server:
         server.login(username, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
