@@ -4,8 +4,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os, jinja2
 
-username= os.getenv('SMTP_USERNAME')
-password= os.getenv('SMTP_PASSWORD')
+username= os.getenv('EMAIL_HOST_USER')
+password= os.getenv('EMAIL_HOST_PASSWORD')
 
 @task()
 def sendEmail(sender_email,receiver_email,subject,template=None,template_data=None):
