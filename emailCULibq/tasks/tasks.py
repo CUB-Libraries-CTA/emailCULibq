@@ -16,7 +16,7 @@ def sendEmail(sender_email,receiver_email,subject,template=None,template_data=No
     templateLoader = jinja2.FileSystemLoader(searchpath="./templates/")
     templateEnv = jinja2.Environment(loader=templateLoader)
     if template:
-        email_template = templateEnv.get_template(template)
+        email_template = templateEnv.get_template("./templates/{0}".format(template))
         text = email_template.render(template_data)
         part1 = MIMEText(text, template.split('.')[-2])
     else:
