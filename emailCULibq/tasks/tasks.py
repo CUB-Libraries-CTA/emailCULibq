@@ -13,13 +13,7 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
     CU Libraries email task.
     args: receiver_email,sender_email,subject
     kwargs: template,template_data
-    Example Submission:
-        {
-            "queue": "celery",
-            "args": ["<receiver_email>","noreply@colorado.edu","test email"],
-            "kwargs": {"template":"default_template.html.j2","template_data":{"name":"Mark"}},
-            "tags": []
-        }
+    Example Submission: See Readme
     """
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
