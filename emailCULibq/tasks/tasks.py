@@ -8,25 +8,32 @@ username= os.getenv('EMAIL_HOST_USER')
 password= os.getenv('EMAIL_HOST_PASSWORD')
 
 @task()
-def sendEmail(sender_email,receiver_email,subject,template=None,template_data=None):
+def sendEmail(receiver_email,sender_email,subject,template="default_template.html.j2",template_data={"name":"CU Libraries"}):
+    """
+    CU Libraries email task.
+    args: receiver_email,sender_email,subject
+    kwargs: template,template_data
+    Example Submission:
+        {
+            "queue": "celery",
+            "args": ["<receiver_email>","noreply@colorado.edu","test email"],
+            "kwargs": {"template":"default_template.html.j2","template_data":{"name":"Mark"}},
+            "tags": []
+        }
+    """
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
     message["From"] = sender_email
     message["To"] = receiver_email
     env = Environment(loader=PackageLoader('emailCULibq', 'tasks/templates'))
-    # template = env.get_template('index.html')
-    # templateLoader = jinja2.FileSystemLoader(searchpath="./templates/")
-    # templateEnv = jinja2.Environment(loader=templateLoader)
     if template:
         email_template = env.get_template(template)
-        # email_template = templateEnv.get_template("/usr/local/lib/python3.6/site-packages/emailCULibq/tasks/templates/{0}".format(template))
         text = email_template.render(template_data)
         part1 = MIMEText(text, template.split('.')[-2])
     else:
-        text="Error has occured. Template was not found!"
-        part1 = MIMEText(text, "plain")
-    message.attach(part1)
+        raise Exception("Error has occured. Template was not found!")
 
+    message.attach(part1)
     
     # Create secure connection with server and send email
     context = ssl.create_default_context()
