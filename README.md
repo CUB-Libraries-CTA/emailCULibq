@@ -36,7 +36,7 @@ Templates
 
 1. Set Template Name with html or plain
 
-    name.<html or plain>.j2
+    name.< html or plain >.j2
 
 2. Configure template --> Jinja2
 
