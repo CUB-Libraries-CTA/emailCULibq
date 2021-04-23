@@ -13,8 +13,9 @@ Installation
 
 1. Update `cybercom` secret within kubernetes cluster
 
-    CELERY_IMPORTS add `emailCULibq`
-    emailCULibq add `git+https://github.com/culibraries/emailCULibq@main`
+        CELERY_IMPORTS add `emailCULibq`
+
+        CELERY_SOURCE add `git+https://github.com/culibraries/emailCULibq@main`
 
 2. Redeploy `cybercom-celery` deployment
 
