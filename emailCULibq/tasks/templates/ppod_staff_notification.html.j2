@@ -65,13 +65,13 @@
                       text-align: center; word-break: break-word; margin-top:0;
                       margin-bottom: 0;">
                     <span style="font-size: 24px; color: #2b303a;">
-                      {% if delivery_type != "error"}
+                      {% if delivery_type != "error" %}
                         <strong>
                           A new Print Purchase On Demand Order has been 
                           received.
                         </strong>
                       {% endif %}
-                      {% if delivery_type == "error"}
+                      {% if delivery_type == "error" %}
                         <strong>
                           Error with a new Print Purchase On Demand Order.
                         </strong>
@@ -81,14 +81,14 @@
                   <br><br>
                   <p style="margin: 0; font-size: 16px; line-height: 1.5;
                       word-break: break-word;margin-top: 0;margin-bottom: 0;">
-                    {% if delivery_type == "rush"} 
+                    {% if delivery_type == "rush" %}
                       A rush order has been placed with the following details:
                     {% endif %}
-                    {% if delivery_type == "regular"}
+                    {% if delivery_type == "regular" %}
                       An order has been successfully placed with ProQuest with 
                       the following details: 
                     {% endif %}
-                    {% if delivery_type == "error"}
+                    {% if delivery_type == "error" %}
                       The following order is in Error.
                     {% endif %}
                   </p>
