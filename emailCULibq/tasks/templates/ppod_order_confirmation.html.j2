@@ -97,11 +97,11 @@
                   </p>
                   <p style="margin:0; margin-bottom:40px; font-size: 16px;
                       line-height: 1.5; word-break: break-word;">
-                  <span style="font-weight:bolder">{{ title }}</span>
+                  <span style="font-weight:bolder">{{ title|e }}</span>
                   <br>
-                  Author/Publisher: {{ author }}
+                  Author/Publisher: {{ author|e }}
                   <br>
-                  ISBN: {{ isbn }}
+                  ISBN: {{ isbn|e }}
                   </p>
                 </div>
               </div>
