@@ -18,8 +18,7 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
     message["From"] = sender_email
-    for addr in receiver_email.split(','):
-        message["To"] = addr
+    message["To"] = receiver_email
     env = Environment(loader=PackageLoader('emailCULibq', 'tasks/templates'))
     if template:
         email_template = env.get_template(template)
@@ -38,5 +37,5 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
         server.ehlo()  # Can be omitted
         server.login(username, password)
         server.sendmail(
-            sender_email, receiver_email, message.as_string()
+            sender_email, receiver_email.split(','), message.as_string()
         )
