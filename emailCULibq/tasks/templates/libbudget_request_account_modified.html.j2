@@ -1,7 +1,7 @@
 {% extends "layout-template.html.j2" %}
 
 {% block content_title %}
-  A time sensitive budget request was submitted.
+  The following budget request has been modified: 
 {% endblock %}
 
 {% block content %}
@@ -16,20 +16,20 @@
       </p>
       <p style="margin:0; margin-bottom:40px; font-size: 16px;
           line-height: 1.5; word-break: break-word;">
-        <span style="font-weight:bolder">Submitted By:</span>
-        {{ user_name|e }}
-        <br>
         <span style="font-weight:bolder">ID:</span>
         {{ req_id|e }}
         <br>
         <span style="font-weight:bolder">Title:</span>
         {{ req_title|e }}
         <br>
-        <span style="font-weight:bolder">Amount:</span>
-        {{ req_amount|e }}
+        <span style="font-weight:bolder">Account Code:</span>
+        {{ req_account_code|e }}
         <br>
-        <span style="font-weight:bolder">Link:</span>
-        {{ req_link|e }}
+        <span style="font-weight:bolder">Speed Type:</span>
+        {{ req_speed_type|e }}
+      </p>
+      <p>
+        To respond, please use the link above.
       </p>
     </div>
   </div>
