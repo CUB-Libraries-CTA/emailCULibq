@@ -37,5 +37,5 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
         server.ehlo()  # Can be omitted
         server.login(username, password)
         server.sendmail(
-            sender_email, receiver_email, message.as_string()
+            sender_email, receiver_email.split(','), message.as_string()
         )

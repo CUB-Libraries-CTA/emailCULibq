@@ -1,0 +1,36 @@
+{% extends "layout-template.html.j2" %}
+
+{% block content_title %}
+  A time sensitive budget request was submitted.
+{% endblock %}
+
+{% block content %}
+  <div style="min-width: 320px; max-width: 640px;
+      display: table-cell; vertical-align: top; width: 640px;">
+    <div style="color:#555555;line-height:1.2; padding-top:10px;
+        padding-right:40px;padding-bottom:10px;padding-left:40px;">
+      <p tyle="margin: 0; font-size: 16px; word-break: break-word;">
+        <span style="color: #a2a4a3; font-size: 16px;">
+          <strong>BUDGET REQUEST INFO</strong>
+        </span>
+      </p>
+      <p style="margin:0; margin-bottom:40px; font-size: 16px;
+          line-height: 1.5; word-break: break-word;">
+        <span style="font-weight:bolder">Submitted By:</span>
+        {{ user_name|e }}
+        <br>
+        <span style="font-weight:bolder">ID:</span>
+        {{ req_id|e }}
+        <br>
+        <span style="font-weight:bolder">Title:</span>
+        {{ req_title|e }}
+        <br>
+        <span style="font-weight:bolder">Amount:</span>
+        {{ req_amount|e }}
+        <br>
+        <span style="font-weight:bolder">Link:</span>
+        {{ req_link|e }}
+      </p>
+    </div>
+  </div>
+{% endblock %}
