@@ -6,6 +6,7 @@ import os, jinja2
 from jinja2 import Environment, PackageLoader
 username= os.getenv('EMAIL_HOST_USER')
 password= os.getenv('EMAIL_HOST_PASSWORD')
+smtp_host= os.getenv('EMAIL_SMTP_HOST',"smtp.colorado.edu")
 
 @task()
 def sendEmail(receiver_email,sender_email,subject,template="default_template.html.j2",template_data={"name":"CU Libraries"}):
@@ -31,7 +32,7 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
     
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP("smtp.colorado.edu", 587) as server:
+    with smtplib.SMTP(smtp_host, 587) as server:
         server.ehlo()  # Can be omitted
         server.starttls(context=context)
         server.ehlo()  # Can be omitted
