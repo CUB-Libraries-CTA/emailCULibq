@@ -33,7 +33,10 @@ def sendEmail(receiver_email,sender_email,subject,template="default_template.htm
     
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    rcpt= [sender_email] + receiver_email.split(',')
+    if sender_email=="no-reply@colorado.edu":
+        rcpt=receiver_email.split(',')
+    else:
+        rcpt= [sender_email] + receiver_email.split(',')
     with smtplib.SMTP(smtp_host, 587) as server:
         server.ehlo()  # Can be omitted
         server.starttls(context=context)
