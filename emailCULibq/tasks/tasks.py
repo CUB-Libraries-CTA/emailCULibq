@@ -1,4 +1,5 @@
-from celery.task import task
+from celery import Celery
+import celeryconfig
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -8,7 +9,10 @@ username= os.getenv('EMAIL_HOST_USER')
 password= os.getenv('EMAIL_HOST_PASSWORD')
 smtp_host= os.getenv('EMAIL_SMTP_HOST')
 
-@task()
+app = Celery()
+app.config_from_object(celeryconfig)
+
+@app.task()
 def sendEmail(receiver_email,sender_email,subject,template="default_template.html.j2",template_data={"name":"CU Libraries"},verified_email='libnotify@colorado.edu'):
     """
     CU Libraries email task.
